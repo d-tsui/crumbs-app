@@ -11,7 +11,6 @@
   right: 15px;
   z-index: 100;
   width: 40px;
-  opacity: 0.8
 }
 
 .menuButton {
@@ -39,4 +38,5 @@
   padding-right:5px;
   margin: 20px 10px;
   z-index:100;
+  opacity: 0.8;
 }
