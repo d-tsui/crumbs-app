@@ -36,7 +36,7 @@ Template.InputBar.events({
   },
   "keyup #inputContent": function(){
     var input = document.getElementById("inputContent").value;
-    if ((input == "image" || input == "pic") && Session.get("crumbType") == "text"){
+    if ((input == "image" || input == "Image"|| input == "pic" || input == "Pic") && Session.get("crumbType") == "text"){
       document.getElementById("input-bar-button-span").innerHTML = "<i class='icon ion-image input-bar-button' id='input-bar-button-image'></i>";
     } else {
       document.getElementById("input-bar-button-span").innerHTML = "";
