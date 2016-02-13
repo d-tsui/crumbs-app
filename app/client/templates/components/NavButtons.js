@@ -1,5 +1,6 @@
 Template.CrumbsButton.events({
   "click .crumbsButton": function(){
-    Router.go("Feed");
+    //Router.go("Feed");
+    Session.set("feedView", 1);
   }
 });

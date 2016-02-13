@@ -27,16 +27,11 @@
   background: radial-gradient(circle, transparent 40%, rgba(120,120,120,100)); /* Standard syntax */
 }
 
-.card {
-  margin: 10px 5px;
-}
-
 .input-bar {
   position:absolute;
   bottom:20px;
   width:95%;
   padding-right:5px;
-  margin: 20px 10px;
   z-index:100;
   opacity: 0.8;
 }

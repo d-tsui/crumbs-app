@@ -10,7 +10,7 @@ Meteor.publish("crumbs", function (myCrumbs, myLocation) {
       );
     } else {
       return Crumbs.find(
-        {geo:{ $near :{$geometry: { type: "Point",  coordinates: myLocation },$minDistance: 0,$maxDistance:3000} } },
+        {geo:{ $near :{$geometry: { type: "Point",  coordinates: myLocation },$minDistance: 0,$maxDistance:50} } },
         {sort: {time: -1}}
       );
     }
