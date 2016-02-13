@@ -33,7 +33,7 @@ if (Meteor.isClient) {
     if (Meteor.user()){
       var loc = Geolocation.latLng();
       if (loc){
-        Meteor.subscribe("crumbs", true, [loc.lng, loc.lat]);
+        Meteor.subscribe("crumbs", false, [loc.lng, loc.lat]);
       }
     }
   });
@@ -49,7 +49,7 @@ Router.map(function() {
       this.next();
     }
   });
-  
+
   this.route('Login', {
     path: '/login',
     layoutTemplate: 'AppFullScreen',
