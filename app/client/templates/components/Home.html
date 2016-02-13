@@ -3,35 +3,18 @@
   {{#ionView}}
     {{#ionContent}}
 
-    {{#unless feedView}}
+    {{#if mapView}}
       <div class="spotlight" style="width: 100%;height: 100%;position: absolute;z-index: 9;"></div>
       {{> NavButtons}}
       {{> InputBar}}
-    {{/unless}}
+    {{/if}}
 
     {{#if feedView}}
-    <div style="position: absolute;width: 100%;height: 100%;z-index: 100;background-color: #000;opacity: 0.5;">
-      <div style="position: absolute;width: 100%;height: 10%;">
-        <img class="img-responsive crumbsButton" id="crumbsBackButton" src="/img/crumblogo.png" alt="Crumb Logo">
-      </div>
-      <div style="position: absolute;bottom:0px;width: 100%;height: 90%;">
-        {{#each crumbs}}
-        <div class="card">
-          <a class="item item-text-wrap" href="/crumb/{{_id}}">
-              {{content}}
-              <p class="subdued">{{timestamp}}</p>
-          </a>
-        </div>
-        {{/each}}
-        {{#unless crumbs}}
-        <div class="card">
-          <div class="item item-text-wrap">
-              <p>No crumbs to view.</p>
-          </div>
-        </div>
-        {{/unless}}
-      </div>
-    </div>
+      {{> FeedView}}
+    {{/if}}
+
+    {{#if crumbView}}
+      {{> CrumbView}}
     {{/if}}
 
     {{> Map}}

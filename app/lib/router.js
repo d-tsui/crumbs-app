@@ -49,14 +49,7 @@ Router.map(function() {
       this.next();
     }
   });
-
-  this.route('Feed', {
-    path: '/feed',
-    onBeforeAction: function (pause) {
-      this.next();
-    }
-  });
-
+  
   this.route('Login', {
     path: '/login',
     layoutTemplate: 'AppFullScreen',
@@ -66,14 +59,6 @@ Router.map(function() {
       } else {
         this.next();
       }
-    }
-  });
-
-  this.route('/crumb/:_id', {
-    name: 'Crumb',
-    template: 'Crumb',
-    action: function () {
-      this.render();
     }
   });
 });
