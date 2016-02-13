@@ -27,6 +27,13 @@ Router.map(function() {
     }
   });
 
+  this.route('Feed', {
+    path: '/feed',
+    onBeforeAction: function (pause) {
+      this.next();
+    }
+  });
+
   this.route('Login', {
     path: '/login',
     layoutTemplate: 'AppFullScreen',
