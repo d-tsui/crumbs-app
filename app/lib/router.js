@@ -45,7 +45,6 @@ if (Meteor.isClient) {
 Router.map(function() {
   this.route('Home', {
     path: '/',
-    layoutTemplate: 'AppFullScreen',
     onBeforeAction: function (pause) {
       this.next();
     }

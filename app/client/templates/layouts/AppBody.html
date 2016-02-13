@@ -1,6 +1,8 @@
 <template name="AppBody">
   {{#ionBody}}
-    {{> ionNavBar style="ios"}}
+    {{#unless home}}
+      {{> ionNavBar style="ios"}}
+    {{/unless}}
     {{#ionNavView}}
       {{> yield}}
     {{/ionNavView}}
