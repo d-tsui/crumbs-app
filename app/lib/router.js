@@ -69,6 +69,14 @@ Router.map(function() {
       }
     }
   });
+
+  this.route('/crumb/:_id', {
+    name: 'Crumb',
+    template: 'Crumb',
+    action: function () {
+      this.render();
+    }
+  });
 });
 
 var requireLogin = function() {

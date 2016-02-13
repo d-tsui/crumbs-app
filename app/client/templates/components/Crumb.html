@@ -1,0 +1,28 @@
+<template name="Crumb">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="/"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">crumbs</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#each comment}}
+      <div class="card">
+        <div class="item item-text-wrap">
+            {{content}}
+        </div>
+      </div>
+      {{/each}}
+      {{#unless crumbs}}
+      <div class="card">
+        <div class="item item-text-wrap">
+            <p>No comments to view.</p>
+        </div>
+      </div>
+      {{/unless}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>
