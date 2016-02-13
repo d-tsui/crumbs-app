@@ -8,7 +8,8 @@ var drawMarkers = function(){
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(crumb.geo[1], crumb.geo[0]),
       map: map.instance,
-      title: crumb._id
+      title: crumb._id,
+      icon:'img/OrangeMarker.png'
     });
     map.instance.markers.push(marker);
   });
@@ -51,7 +52,7 @@ Template.Map.rendered = function() {
     var marker = new google.maps.Marker({
       position: map.options.center,
       map: map.instance,
-      icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+      icon:'img/BlueMarker.png'
     });
 
     Deps.autorun(function() {
