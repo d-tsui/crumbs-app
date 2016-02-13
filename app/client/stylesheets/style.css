@@ -37,7 +37,8 @@
   width:95%;
   padding-right:5px;
   z-index:100;
-  opacity: 0.8;
+  border-radius: 5px;
+  opacity: 0.75;
 }
 
 /* Input bar picture overlay */
@@ -46,4 +47,11 @@
   padding: 10px;
   color: white;
   border: 1px solid #66CCCC;
+}
+
+/* Bootstrap - img-responsive */
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
