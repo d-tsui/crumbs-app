@@ -9,6 +9,8 @@ Template.CrumbView.helpers({
     if (Session.get("currentCrumb")){
       var crumb = Crumbs.findOne({_id: Session.get("currentCrumb")});
       crumb.timestamp = moment(crumb.time).fromNow(true);
+      crumb.text = (crumb.type == "text");
+      crumb.image = (crumb.type == "image");
       return crumb;
     } else {
       return null;
@@ -16,7 +18,7 @@ Template.CrumbView.helpers({
   },
   currentComments: function(){
     if (Session.get("currentCrumb")){
-      var comments = Comments.find({crumbId: Session.get("currentCrumb")}).fetch();
+      var comments = Comments.find({crumbId: Session.get("currentCrumb")},{sort: {time: -1}}).fetch();
       _.map(comments, function(comment){
         comment.timestamp = moment(comment.time).fromNow(true);
       });

@@ -25,3 +25,5 @@ service-configuration
 meteoric:ionic
 iron:router
 dburles:google-maps
+mdg:camera
+lepozepo:cloudinary

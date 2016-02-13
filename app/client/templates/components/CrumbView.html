@@ -1,41 +1,47 @@
 <template name="CrumbView">
   <div style="position: absolute;width: 100%;height: 100%;z-index: 100;background-color: #000;opacity: 0.5;">
-    <div style="position: absolute;width: 100%;height: 10%;">
-      <img class="img-responsive crumbsButton" id="crumbsBackButton" src="/img/crumblogo.png" alt="Crumb Logo">
-    </div>
-    <div style="position: absolute;bottom:0px;width: 100%;height: 90%;">
-      <div class="card">
-        <div class="item item-text-wrap">
+  </div>
+  <div style="position: absolute;width: 100%;height: 10%;z-index: 101;">
+    <img class="img-responsive crumbsButton" id="crumbsBackButton" src="/img/crumblogo.png" alt="Crumb Logo">
+  </div>
+  <div style="position: absolute;bottom:0px;width: 100%;height: 90%;z-index: 101;overflow-x: hidden;overflow-y: scroll;">
+    <div class="card">
+      <div class="item item-text-wrap">
+          {{#if currentCrumb.text}}
             {{currentCrumb.content}}
-            <p class="subdued">{{currentCrumb.timestamp}}</p>
-        </div>
+          {{/if}}
+          {{#if currentCrumb.image}}
+            <img src="{{currentCrumb.content}}" />
+          {{/if}}
+          <p class="subdued">{{currentCrumb.timestamp}}</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="Reply..." id="replyText">
+          <!--<i class="icon ion-image" id="replyImage"></i>-->
+        </label>
+        <button class="button button-clear" id="replySubmit">
+          Post
+        </button>
       </div>
 
-      <div class="card">
-        <div class="item-input-inset">
-          <label class="item-input-wrapper">
-            <input type="text" placeholder="Reply..." id="replyText">
-            <!--<i class="icon ion-image" id="replyImage"></i>-->
-          </label>
-          <button class="button button-clear" id="replySubmit">
-            Post
-          </button>
+      <div class="list">
+        {{#each currentComments}}
+        <div class="item">
+            {{content}}
+            <p class="subdued">{{timestamp}}</p>
         </div>
-
-        <div class="list">
-          {{#each currentComments}}
-          <div class="item">
-              {{content}}
-              <p class="subdued">{{timestamp}}</p>
-          </div>
-          {{/each}}
-          {{#if noCurrentComments}}
-          <div class="item">
-              <p style="text-align:center">No replies to view.</p>
-          </div>
-          {{/if}}
+        {{/each}}
+        {{#if noCurrentComments}}
+        <div class="item">
+            <p style="text-align:center">No replies to view.</p>
         </div>
+        {{/if}}
       </div>
     </div>
   </div>
+
 </template>
