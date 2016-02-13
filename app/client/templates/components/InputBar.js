@@ -31,6 +31,7 @@ Template.InputBar.events({
     if (crumb.content != "" && geo){
       crumb.geo = [geo.lng, geo.lat];
       Meteor.call("postCrumb", crumb);
+      Session.set("crumbType", "text");
       document.getElementById("input-bar-card").innerHTML = "<label class='item item-input' id='input-bar-label'><input type='text' placeholder='Write something...' id='inputContent'><span id='input-bar-button-span'></span><button class='button button-clear' id='submit'><i class='icon ion-ios-arrow-right placeholder-icon'></i></button></label>";
     }
   },
@@ -44,7 +45,7 @@ Template.InputBar.events({
       document.getElementById("input-bar-button-span").innerHTML = "";
     }
   },
-  "click #input-bar-button-image": function(){
+  "click #input-bar-button-image": function(event){
     event.preventDefault();
     var options = {width: 200,height: 200};
     if (Meteor.isCordova){
@@ -60,7 +61,7 @@ Template.InputBar.events({
       });
     });
   },
-  "click #input-bar-button-camera": function(){
+  "click #input-bar-button-camera": function(event){
     event.preventDefault();
     var options = {width: 200,height: 200};
     MeteorCamera.getPicture(options, function(err, data){
