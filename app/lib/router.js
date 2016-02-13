@@ -7,24 +7,40 @@ Router.configure({
 
 dataReadyHold = null;
 
+if (Meteor.isClient) {
+
+};
+
 Meteor.startup(function () {
   if (Meteor.isClient) {
     dataReadyHold = LaunchScreen.hold();
     Geolocation.latLng();
     GoogleMaps.load();
-    dataReadyHold.release();
-  };
-
-  if (Meteor.isClient) {
-    Deps.autorun(function() {
-      var loc = Geolocation.latLng();
-      Meteor.subscribe("crumbs", true, [loc.lng, loc.lat]);
-    });
-
-    Meteor.subscribe("comments");
-    Meteor.subscribe("notifications");
   };
 });
+
+if (Meteor.isClient) {
+  // Keep showing the launch screen on mobile devices until we have loaded
+  // the app's data
+  getGeo = Meteor.setInterval(function() {
+    if(Geolocation.latLng()){
+      Meteor.clearInterval(getGeo);
+      dataReadyHold.release();
+    }
+  }, 500);
+
+  Deps.autorun(function() {
+    if (Meteor.user()){
+      var loc = Geolocation.latLng();
+      if (loc){
+        Meteor.subscribe("crumbs", true, [loc.lng, loc.lat]);
+      }
+    }
+  });
+
+  Meteor.subscribe("comments");
+  Meteor.subscribe("notifications");
+};
 
 Router.map(function() {
   this.route('Home', {
