@@ -55,6 +55,17 @@ Template.Map.rendered = function() {
       icon:'img/BlueMarker.png'
     });
 
+    // Add circle overlay and bind to marker
+    var circle = new google.maps.Circle({
+      map: map.instance,
+      radius: 50,    // radius in meters
+      strokeWeight: 1,
+      strokeColor: "rgba(255,255,255,255)",
+      strokeOpacity: 0.8,
+      fillColor: "rgba(255,255,255,250)"
+    });
+    circle.bindTo('center', marker, 'position');
+
     Deps.autorun(function() {
       drawMarkers();
     });
