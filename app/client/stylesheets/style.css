@@ -47,3 +47,10 @@
   color: white;
   border: 1px solid #66CCCC;
 }
+
+/* Bootstrap - img-responsive */
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

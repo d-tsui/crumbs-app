@@ -24,18 +24,19 @@ Template.InputBar.events({
     if (crumb.type == "text"){
       crumb.content = document.getElementById("inputContent").value;
     } else if (crumb.type == "image"){
-      crumb.content = document.getElementById("imagePreview").src;
+      crumb.src =  document.getElementById("imagePreview").src;
+      crumb.content = document.getElementById("inputContent").value;
     }
 
     if (crumb.content != "" && geo){
       crumb.geo = [geo.lng, geo.lat];
       Meteor.call("postCrumb", crumb);
-      document.getElementById("input-bar-label").innerHTML = "<input type='text' placeholder='Write something...' id='inputContent'><span id='input-bar-button-span'></span><button class='button button-clear' id='submit'><i class='icon ion-ios-arrow-right placeholder-icon'></i></button>";
+      document.getElementById("input-bar-card").innerHTML = "<label class='item item-input' id='input-bar-label'><input type='text' placeholder='Write something...' id='inputContent'><span id='input-bar-button-span'></span><button class='button button-clear' id='submit'><i class='icon ion-ios-arrow-right placeholder-icon'></i></button></label>";
     }
   },
   "keyup #inputContent": function(){
     var input = document.getElementById("inputContent").value;
-    if (input == "image" || input == "pic"){
+    if ((input == "image" || input == "pic") && Session.get("crumbType") == "text"){
       document.getElementById("input-bar-button-span").innerHTML = "<i class='icon ion-image input-bar-button' id='input-bar-button-image'></i>";
     } else {
       document.getElementById("input-bar-button-span").innerHTML = "";
@@ -53,7 +54,7 @@ Template.InputBar.events({
       }, function(err, res) {
         var url = res.url;
         Session.set("crumbType", "image");
-        document.getElementById("input-bar-label").innerHTML = "<img src='"+ url + "' id='imagePreview' /><button class='button button-clear' id='submit'><i class='icon ion-ios-arrow-right placeholder-icon'></i></button>";
+        document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' />" + document.getElementById("input-bar-card").innerHTML;
       });
     });
   }
