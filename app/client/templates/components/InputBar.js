@@ -36,8 +36,10 @@ Template.InputBar.events({
   },
   "keyup #inputContent": function(){
     var input = document.getElementById("inputContent").value;
-    if ((input == "image" || input == "pic") && Session.get("crumbType") == "text"){
+    if ((input == "image" || input == "pic" || input == "photo") && Session.get("crumbType") == "text"){
       document.getElementById("input-bar-button-span").innerHTML = "<i class='icon ion-image input-bar-button' id='input-bar-button-image'></i>";
+    } else if (input == "cam" && Session.get("crumbType") == "text") {
+      document.getElementById("input-bar-button-span").innerHTML = "<i class='icon ion-camera input-bar-button' id='input-bar-button-camera'></i>";
     } else {
       document.getElementById("input-bar-button-span").innerHTML = "";
     }
@@ -48,6 +50,19 @@ Template.InputBar.events({
     if (Meteor.isCordova){
       options.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
     }
+    MeteorCamera.getPicture(options, function(err, data){
+      Cloudinary._upload_file(dataURLToBlob(data), {
+        folder: "crumbs"
+      }, function(err, res) {
+        var url = res.url;
+        Session.set("crumbType", "image");
+        document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' />" + document.getElementById("input-bar-card").innerHTML;
+      });
+    });
+  },
+  "click #input-bar-button-camera": function(){
+    event.preventDefault();
+    var options = {width: 200,height: 200};
     MeteorCamera.getPicture(options, function(err, data){
       Cloudinary._upload_file(dataURLToBlob(data), {
         folder: "crumbs"
