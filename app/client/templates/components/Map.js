@@ -49,22 +49,31 @@ Template.Map.rendered = function() {
     map.instance.markers = []; // array of markers for this end user
 
     // Add a marker to the map once it's ready
-    var marker = new google.maps.Marker({
+    /*var marker = new google.maps.Marker({
       position: map.options.center,
       map: map.instance,
       icon:'img/BlueMarker.png'
-    });
+    });*/
 
     // Add circle overlay and bind to marker
-    var circle = new google.maps.Circle({
+    var radius = new google.maps.Circle({
       map: map.instance,
       radius: 50,    // radius in meters
       strokeWeight: 1,
       strokeColor: "rgba(255,255,255,255)",
       strokeOpacity: 0.8,
-      fillColor: "rgba(255,255,255,250)"
+      fillColor: "rgba(255,255,255,250)",
+      center: map.options.center
     });
-    circle.bindTo('center', marker, 'position');
+
+    var circle = new google.maps.Circle({
+      map: map.instance,
+      radius: 3,    // radius in meters
+      strokeWeight: 3,
+      strokeColor: "rgb(0,77,255)",
+      fillColor: "rgb(0,109,255)",
+      center: map.options.center
+    });
 
     Deps.autorun(function() {
       drawMarkers();

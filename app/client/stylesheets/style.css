@@ -30,6 +30,11 @@
   background: radial-gradient(circle, transparent 40%, rgba(120,120,120,100)); /* Standard syntax */
 }
 
+/*person marker overlay */
+.centered {
+  margin: auto;
+}
+
 /* Input bar */
 .input-bar {
   position:absolute;
