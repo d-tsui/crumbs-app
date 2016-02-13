@@ -10,14 +10,12 @@ dataReadyHold = null;
 Meteor.startup(function () {
   if (Meteor.isClient) {
     dataReadyHold = LaunchScreen.hold();
+    Meteor.subscribe("crumbs");
+    Meteor.subscribe("comments");
+    Meteor.subscribe("notifications");
+    Geolocation.latLng();
+    GoogleMaps.load();
     dataReadyHold.release();
-
-    var location = Iron.Location.get();
-    if (location.queryObject.platformOverride) {
-      Session.set('platformOverride', location.queryObject.platformOverride);
-    }
-
-    Meteor.subscribe("users");
   }
 });
 
@@ -51,4 +49,4 @@ var requireLogin = function() {
 }
 
 // Before a route loads, redirect if user not logged in (except for login page)
-Router.onBeforeAction(requireLogin, {except: ['Login', 'Home']});
+Router.onBeforeAction(requireLogin, {except: ['Login']});
