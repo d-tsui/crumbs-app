@@ -1,6 +1,19 @@
 // CUSTOMIZED MAP STLYING
 var styles = [{"stylers":[{"saturation":-100}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#0099dd"}]},{"elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#aadd55"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"on"}]},{}];
 
+var drawMarkers = function(){
+  var map = GoogleMaps.maps.crumbsMap;
+  var crumbs = Crumbs.find().fetch();
+  _.each(crumbs, function(crumb){
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(crumb.geo[1], crumb.geo[0]),
+      map: map.instance,
+      title: crumb._id
+    });
+    map.instance.markers.push(marker);
+  });
+}
+
 Template.Map.helpers({
   crumbsMapOptions: function() {
     // Make sure the maps API has loaded
@@ -33,13 +46,16 @@ Template.Map.rendered = function() {
     */
 
     map.instance.markers = []; // array of markers for this end user
-    map.instance.placesMarkers = []; // array of markers for places already checked in
 
     // Add a marker to the map once it's ready
     var marker = new google.maps.Marker({
       position: map.options.center,
       map: map.instance,
       icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+    });
+
+    Deps.autorun(function() {
+      drawMarkers();
     });
   });
 
