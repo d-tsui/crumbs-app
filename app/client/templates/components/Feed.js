@@ -1,5 +1,9 @@
 Template.Feed.helpers({
   crumbs : function(){
-      return Crumbs.find();
+    var crumbs = Crumbs.find().fetch();
+    _.map(crumbs, function(crumb){
+      crumb.timestamp = moment(crumb.time).fromNow(true);
+    });
+    return crumbs;
   }
 });
