@@ -10,5 +10,13 @@
   top: 15px;
   right: 15px;
   z-index: 100;
-  width: 44px;
+  width: 40px;
+}
+
+.menuButton {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 100;
+  width: 40px;
 }
