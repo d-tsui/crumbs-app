@@ -1,4 +1,4 @@
-Template.Feed.helpers({
+Template.FeedView.helpers({
   crumbs : function(){
     var crumbs = Crumbs.find().fetch();
     _.map(crumbs, function(crumb){
