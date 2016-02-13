@@ -9,7 +9,20 @@
 
   {{#ionView}}
     {{#ionContent}}
-      <h1> Feed goes here.</h1>
+      {{#each crumbs}}
+      <div class="card">
+        <div class="item item-text-wrap">
+            {{content}}
+        </div>
+      </div>
+      {{/each}}
+      {{#unless crumbs}}
+      <div class="card">
+        <div class="item item-text-wrap">
+            <p>No crumbs to view.</p>
+        </div>
+      </div>
+      {{/unless}}
     {{/ionContent}}
   {{/ionView}}
 </template>
