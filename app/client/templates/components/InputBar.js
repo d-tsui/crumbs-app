@@ -37,7 +37,11 @@ Template.InputBar.events({
   },
   "keyup #inputContent": function(){
     var input = document.getElementById("inputContent").value;
+<<<<<<< HEAD
+    if ((input == "image" || input == "Image"|| input == "pic" || input == "Pic") && Session.get("crumbType") == "text"){
+=======
     if ((input == "image" || input == "pic" || input == "photo") && Session.get("crumbType") == "text"){
+>>>>>>> b30304c33ae575583ca4a785102a8d845b4be09f
       document.getElementById("input-bar-button-span").innerHTML = "<i class='icon ion-image input-bar-button' id='input-bar-button-image'></i>";
     } else if (input == "cam" && Session.get("crumbType") == "text") {
       document.getElementById("input-bar-button-span").innerHTML = "<i class='icon ion-camera input-bar-button' id='input-bar-button-camera'></i>";
