@@ -24,7 +24,7 @@
 .spotlight {
   position: absolute;
   margin: 0 auto;
-  background: radial-gradient(circle, transparent, black); /* Standard syntax */
+  background: radial-gradient(circle, transparent 40%, rgba(120,120,120,100)); /* Standard syntax */
 }
 
 .card {
