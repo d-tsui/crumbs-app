@@ -10,13 +10,20 @@ dataReadyHold = null;
 Meteor.startup(function () {
   if (Meteor.isClient) {
     dataReadyHold = LaunchScreen.hold();
-    Meteor.subscribe("crumbs");
-    Meteor.subscribe("comments");
-    Meteor.subscribe("notifications");
     Geolocation.latLng();
     GoogleMaps.load();
     dataReadyHold.release();
-  }
+  };
+
+  if (Meteor.isClient) {
+    Deps.autorun(function() {
+      var loc = Geolocation.latLng();
+      Meteor.subscribe("crumbs", true, [loc.lng, loc.lat]);
+    });
+
+    Meteor.subscribe("comments");
+    Meteor.subscribe("notifications");
+  };
 });
 
 Router.map(function() {
