@@ -53,14 +53,7 @@ Template.Map.rendered = function() {
     });
     */
 
-    map.instance.markers = []; // array of markers for this end user
-
-    // Add a marker to the map once it's ready
-    var marker = new google.maps.Marker({
-      position: map.options.center,
-      map: map.instance,
-      icon:'img/RedMarker.png',
-    });
+    //map.instance.markers = []; // array of markers for this end user
 
     // Add circle overlay and bind to marker
     var radius = new google.maps.Circle({

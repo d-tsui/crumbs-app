@@ -7,10 +7,15 @@ var dataURLToBlob = function(dataURL){
   return new Blob([u8arr], {type:mime});
 };
 
+Template.InputBar.helpers({
+  "inFocus": function(){
+    return Session.get("focusStatus");
+  }
+});
 
 Template.InputBar.events({
   "click #submit": function(){
-    document.getElementById("input-bar-card").style.opacity = "0.5";
+    Session.set("focusStatus", false);
     var crumb = {}
     var geo = Geolocation.latLng();
     if (!geo){
@@ -37,7 +42,7 @@ Template.InputBar.events({
     }
   },
   "focusin #inputContent": function(){
-        document.getElementById("input-bar-card").style.opacity = "1.0";
+        Session.set("focusStatus", true); //set opacity to 1.0
   },
   "keyup #inputContent": function(){
     var input = document.getElementById("inputContent").value.toLowerCase();
