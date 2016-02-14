@@ -71,7 +71,7 @@ Template.InputBar.events({
         var url = res.url;
         Session.set("crumbType", "image");
         document.getElementById("input-bar-card").style.opacity = 1;
-        document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' style='width:100%' />" + document.getElementById("input-bar-card").innerHTML;
+        document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' style='width:100%;padding:25px' />" + document.getElementById("input-bar-card").innerHTML;
       });
     });
   },
@@ -85,7 +85,7 @@ Template.InputBar.events({
         var url = res.url;
         Session.set("crumbType", "image");
         document.getElementById("input-bar-card").style.opacity = 1;
-        document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' style='width:100%' />" + document.getElementById("input-bar-card").innerHTML;
+        document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' style='width:100%;padding:25px' />" + document.getElementById("input-bar-card").innerHTML;
       });
     });
   }
