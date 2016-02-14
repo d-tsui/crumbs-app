@@ -6,6 +6,7 @@ Template.FeedView.helpers({
       crumb.text = (crumb.type == "text");
       crumb.image = (crumb.type == "image");
       crumb.gif = (crumb.type == "gif");
+      crumb.poll = (crumb.type == "poll");
       crumb.comments = Comments.find({crumbId: crumb._id}).count();
     });
     return crumbs;

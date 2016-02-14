@@ -23,7 +23,7 @@ Template.InputBar.events({
     }
 
     crumb.type = Session.get("crumbType");
-    if (crumb.type == "text"){
+    if (crumb.type == "text" || crumb.type == "poll"){
       crumb.content = document.getElementById("inputContent").value;
     } else if (crumb.type == "image" || crumb.type == "gif"){
       crumb.src =  document.getElementById("imagePreview").src;
@@ -57,6 +57,12 @@ Template.InputBar.events({
       document.getElementById("input-bar-button-span").innerHTML = "<i class='icon ion-camera input-bar-button' id='input-bar-button-camera'></i>";
     } else if (input == "gif" && Session.get("crumbType") == "text") {
       document.getElementById("input-bar-button-span").innerHTML = "<i class='input-bar-button' id='input-bar-button-gif'>GIF</i>";
+    } else if ((input == "ask" || input == "poll" && Session.get("crumbType") == "text") || Session.get("crumbType") == "poll") {
+      if (Session.get("crumbType") == "poll"){
+        document.getElementById("input-bar-button-span").innerHTML = "<i class='input-bar-button' id='input-bar-button-poll' style='background-color:rgba(17,193,243,0.4)'>ASK</i>";
+      } else {
+        document.getElementById("input-bar-button-span").innerHTML = "<i class='input-bar-button' id='input-bar-button-poll'>ASK</i>";
+      }
     } else {
       document.getElementById("input-bar-button-span").innerHTML = "";
     }
@@ -94,6 +100,16 @@ Template.InputBar.events({
   },
   "click #input-bar-button-gif": function(event){
     Session.set("viewType", "gif");
+  },
+  "click #input-bar-button-poll": function(event){
+    if (Session.get("crumbType") == "text"){
+      Session.set("crumbType", "poll");
+      document.getElementById("inputContent").value = "";
+      document.getElementById("input-bar-button-poll").style.backgroundColor = "rgba(17,193,243,1)";
+    } else {
+      Session.set("crumbType", "text");
+      document.getElementById("input-bar-button-poll").style.backgroundColor = "rgba(17,193,243,0.4)";
+    }
   }
 });
 

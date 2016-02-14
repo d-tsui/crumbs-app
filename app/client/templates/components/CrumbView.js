@@ -52,6 +52,7 @@ Template.CrumbView.helpers({
       crumb.text = (crumb.type == "text");
       crumb.image = (crumb.type == "image");
       crumb.gif = (crumb.type == "gif");
+      crumb.poll = (crumb.type == "poll");
       return crumb;
     } else {
       return null;
@@ -84,6 +85,14 @@ Template.CrumbView.helpers({
   },
   toggleDelete: function(){
     return Session.get("toggleDelete");
+  },
+  pollAnswers: function(){
+    var crumb = Crumbs.findOne({_id: Session.get("currentCrumb")});
+    if (crumb.type == "poll"){
+
+    } else {
+      return null;
+    }
   }
 });
 

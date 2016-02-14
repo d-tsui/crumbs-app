@@ -20,6 +20,8 @@ var drawMarkers = function(){
       icon = 'img/OrangeMarker.png'
     } else if (crumb.type == "gif"){
       icon = 'img/PurpleMarker.png'
+    } else if (crumb.type == "poll"){
+      icon = 'img/GreenMarker.png'
     }
 
     var marker = new google.maps.Marker({

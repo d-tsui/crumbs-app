@@ -78,6 +78,11 @@ div .feedDisplay {
   color:white;
 }
 
+.comment-circle-poll {
+  background-color: #29A764;
+  color:white;
+}
+
 /* Input bar picture overlay */
 .input-bar-button {
   background-color: rgba(17, 193, 243, 0.4);

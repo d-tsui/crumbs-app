@@ -18,6 +18,9 @@
             <img src="{{currentCrumb.src}}" class="img-responsive" style="width:100%" /><br>
             {{currentCrumb.content}}
           {{/if}}
+          {{#if currentCrumb.poll}}
+            {{currentCrumb.content}}
+          {{/if}}
           <p class="subdued">{{currentCrumb.timestamp}}</p>
 
           {{#if toggleDelete}}
