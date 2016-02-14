@@ -41,6 +41,7 @@ Template.CrumbView.events({
 
 Template.CrumbView.rendered = function(){
   Session.set("toggleDelete", 0);
+  Meteor.subscribe("crumbs", true, null);
 }
 
 Template.CrumbView.helpers({
@@ -84,3 +85,9 @@ Template.CrumbView.helpers({
     return Session.get("toggleDelete");
   }
 });
+
+function closest(el, fn) {
+    return el && (
+        fn(el) ? el : closest(el.parentNode, fn)
+    );
+}

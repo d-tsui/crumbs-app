@@ -8,11 +8,8 @@ Template.FeedView.helpers({
       crumb.comments = Comments.find({crumbId: crumb._id}).count();
     });
     return crumbs;
-  }
-});
-
-Template.FeedView.helpers({
-  "feedView": function(){
+  },
+  feedView: function(){
     if (!Session.get("feedView")){
       Meteor.subscribe("crumbs", true, null);
     }
@@ -26,5 +23,11 @@ Template.FeedView.events({
   },
   "click #feedToggle": function(){
     Session.set("feedView", true);
+  },
+  "click #viewCrumb": function(event){
+     var c = closest(event.target, function(el){return el.id === 'viewCrumb';});
+     var crumbId = c.getAttribute("data-id");
+     Session.set("currentCrumb", crumbId);
+     Session.set("viewType", "crumb");
   }
 });

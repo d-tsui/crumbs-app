@@ -1,12 +1,6 @@
 Template.Home.events({
   "click #crumbsBackButton": function(){
     Session.set("viewType", "map");
-  },
-  "click #viewCrumb": function(event){
-     var c = closest(event.target, function(el){return el.id === 'viewCrumb';});
-     var crumbId = c.getAttribute("data-id");
-     Session.set("currentCrumb", crumbId);
-     Session.set("viewType", "crumb");
   }
 });
 
