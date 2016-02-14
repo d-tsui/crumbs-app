@@ -10,6 +10,7 @@ var dataURLToBlob = function(dataURL){
 
 Template.InputBar.events({
   "click #submit": function(){
+    document.getElementById("input-bar-card").style.opacity = "0.5";
     var crumb = {}
     var geo = Geolocation.latLng();
     if (!geo){
@@ -34,6 +35,9 @@ Template.InputBar.events({
       Session.set("crumbType", "text");
       document.getElementById("input-bar-card").innerHTML = "<label class='item item-input' id='input-bar-label'><input type='text' placeholder='Write something...' id='inputContent'><span id='input-bar-button-span'></span><button class='button button-clear' id='submit'><i class='icon ion-ios-arrow-right placeholder-icon'></i></button></label>";
     }
+  },
+  "focusin #inputContent": function(){
+        document.getElementById("input-bar-card").style.opacity = "1.0";
   },
   "keyup #inputContent": function(){
     var input = document.getElementById("inputContent").value.toLowerCase();

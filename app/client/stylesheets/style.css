@@ -30,11 +30,6 @@
   background: radial-gradient(circle, transparent 40%, rgba(120,120,120,100)); /* Standard syntax */
 }
 
-/*person marker overlay */
-.centered {
-  margin: auto;
-}
-
 /* Input bar */
 .input-bar {
   position:absolute;
@@ -42,8 +37,9 @@
   width:95%;
   z-index:100;
   border-radius: 5px;
-  opacity: 0.75;
+  opacity: 0.5;
 }
+
 
 /*comment circle styles */
 .text {
@@ -76,4 +72,5 @@
   display: block;
   max-width: 100%;
   height: auto;
+  padding: 5px;
 }
