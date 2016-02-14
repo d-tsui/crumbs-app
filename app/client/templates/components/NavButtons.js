@@ -36,7 +36,7 @@ Template.MenuButton.events({
 
 Template.LogoutButton.events({
   "click #logoutButton": function(){
+    Router.go("Login");
     Meteor.logout();
-    Router.go("/login");
   }
 });

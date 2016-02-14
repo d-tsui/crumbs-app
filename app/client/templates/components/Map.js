@@ -8,10 +8,9 @@ var drawMarkers = function(){
   for (var i = 0; i < markers.length; i++){
     markers[i].setMap(null);
   }
-  map.instance.markers = [];
 
   var loc = Geolocation.latLng();
-  var crumbs = Crumbs.find({geo:{ $near :{$geometry: { type: "Point",  coordinates: [loc.lng, loc.lat] }, $maxDistance:50} }}).fetch();
+  var crumbs = Crumbs.find().fetch();
   _.each(crumbs, function(crumb){
     var icon = "";
     if (crumb.type == "text"){
@@ -23,11 +22,15 @@ var drawMarkers = function(){
     } else if (crumb.type == "poll"){
       icon = 'img/GreenMarker.png'
     }
+    console.log(_.findWhere(map.instance.markers, {title: crumb._id}));
+    if (!(_.findWhere(map.instance.markers, {title: crumb._id}))){
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(crumb.geo[1], crumb.geo[0]), map: map.instance, title: crumb._id, icon:icon
+      });
+      map.instance.markers.push(marker);
+      console.log(marker);
+    }
 
-    var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(crumb.geo[1], crumb.geo[0]), map: map.instance, title: crumb._id, icon:icon
-    });
-    map.instance.markers.push(marker);
   });
   /*
   var crumbsFar = Crumbs.find().fetch();
@@ -87,6 +90,11 @@ Template.Map.rendered = function() {
 
     Deps.autorun(function() {
       drawMarkers();
+    });
+    Deps.autorun(function(){
+      var loc = Geolocation.latLng();
+      var googleLatAndLong = new google.maps.LatLng(loc.lat, loc.lng);
+      map.instance.panTo(googleLatAndLong);
     });
   });
 
