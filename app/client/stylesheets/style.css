@@ -45,6 +45,23 @@
   opacity: 0.75;
 }
 
+/*comment circle styles */
+.text {
+    background-color: rgb(108,129,222); /* blue */
+    color: white;
+    padding: 2px 5px 2px 5px;
+    margin-right: 2px;
+    margin-bottom: 10px;
+}
+
+.image {
+  background-color: rgb(255,147,59);  /* orange */
+  color: white;
+  padding: 2px 5px 2px 5px;
+  margin-right: 2px;
+  margin-bottom: 10px;
+}
+
 /* Input bar picture overlay */
 .input-bar-button {
   background-color: rgba(17, 193, 243, 0.4);

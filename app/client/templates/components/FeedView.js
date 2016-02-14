@@ -5,6 +5,7 @@ Template.FeedView.helpers({
       crumb.timestamp = moment(crumb.time).fromNow(true);
       crumb.text = (crumb.type == "text");
       crumb.image = (crumb.type == "image");
+      crumb.comments = Comments.find({crumbId: crumb._id}).count();
     });
     return crumbs;
   }
