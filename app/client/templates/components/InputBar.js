@@ -45,7 +45,7 @@ Template.InputBar.events({
   "focusout #inputContent": function(){
     if (!document.getElementById("imagePreview")){
       document.getElementById("input-bar-card").className = 'card input-bar focusOutInputBar';
-      document.getElementById("input-bar-card").style.opacity = 0.5;
+      document.getElementById("input-bar-card").style.opacity = 0.6;
     }
   },
   "keyup #inputContent": function(){
@@ -71,7 +71,7 @@ Template.InputBar.events({
         var url = res.url;
         Session.set("crumbType", "image");
         document.getElementById("input-bar-card").style.opacity = 1;
-        document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' style='width:100%' />" + document.getElementById("input-bar-card").innerHTML;
+        document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' style='width:100%;padding:25px' />" + document.getElementById("input-bar-card").innerHTML;
       });
     });
   },
@@ -85,7 +85,7 @@ Template.InputBar.events({
         var url = res.url;
         Session.set("crumbType", "image");
         document.getElementById("input-bar-card").style.opacity = 1;
-        document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' style='width:100%' />" + document.getElementById("input-bar-card").innerHTML;
+        document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' style='width:100%;padding:25px' />" + document.getElementById("input-bar-card").innerHTML;
       });
     });
   }
