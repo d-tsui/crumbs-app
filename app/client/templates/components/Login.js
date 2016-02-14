@@ -11,12 +11,5 @@ Template.Login.events({
   }
 });
 
-Template.Login.rendered = function () {
-  $('.bar-header').hide();
-  $('.content').removeClass('has-header');
-}
-
 Template.Login.destroyed = function () {
-  $('.bar-header').show();
-  $('.content').addClass('has-header');
 }
