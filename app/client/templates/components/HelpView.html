@@ -1,0 +1,24 @@
+<template name="HelpView">
+  <div style="position: absolute;width: 100%;height: 100%;z-index: 100;background-color: #000;opacity: 0.5;">
+  </div>
+  <div style="position: absolute;width: 100%;height: 10%;z-index: 101;">
+    <div class="card fadeIn" id="helpBar" style="opacity:0.6;margin: 15px;padding-bottom:5px;height: 40px;width:75%">
+      <h1>How to Use Crumbs:</h1>
+      <p>To drop a crumb, simply type in text to the input bar, then press the arrow next to the input field to submit.
+      <br>Crumbs supports several "magic words", which, if typed into the input bar, allow the user to post special types of media.
+    Type any of the following (case insensitive) into an empty input bar, then click on the media icon that appears next to the text.
+    Each of the following types of media are denoted in the user's map by a marker of specific color.</p>
+    <ul>
+      <li><img src="/img/OrangeMarker.png" alt="Orange Marker">pic: upload image from gallery</li>
+      <li><img src="/img/OrangeMarker.png" alt="Orange Marker">cam: take a picture with device camera</li>
+      <li><img src="/img/GreenMarker.png" alt="Green Marker">ask: type in a question to poll users who read your crumb</li>
+      <li><img src="/img/PurpleMarker.png" alt="Purple Marker">gif: clicking on this icon brings you to a search bar where you can type in a gif keyword, and select from a variety of options</li>
+    </ul>
+    <p>Other facts about the app:</p>
+    <ul>
+      <li>The viewable radius is 50 meters from the user's location. Crumb markers are discoverable within a roughly 150 meter radius.</li>
+    </ul>
+    </div>
+    <img class="crumbsButton" id="crumbsBackButton" src="/img/crumblogo.png" alt="Crumb Logo">
+  </div>
+</template>
