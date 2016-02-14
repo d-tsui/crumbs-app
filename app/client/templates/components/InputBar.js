@@ -29,7 +29,7 @@ Template.InputBar.events({
       crumb.content = document.getElementById("inputContent").value;
     }
 
-    if (crumb.content != "" && geo){
+    if (crumb.content != ""  || crumb.src  != "" && geo){
       crumb.geo = [geo.lng, geo.lat];
       Meteor.call("postCrumb", crumb);
       Session.set("crumbType", "text");
