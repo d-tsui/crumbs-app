@@ -38,6 +38,7 @@ if (Meteor.isClient) {
     }
   });
 
+  Session.set("feedView", true);
   Meteor.subscribe("comments");
   Meteor.subscribe("notifications");
 };

@@ -5,11 +5,18 @@ var drawMarkers = function(){
   var map = GoogleMaps.maps.crumbsMap;
   var crumbs = Crumbs.find().fetch();
   _.each(crumbs, function(crumb){
+    var icon = "";
+    if (crumb.type == "text"){
+      icon = 'img/BlueMarker.png';
+    } else if (crumb.type == "image"){
+      icon = 'img/OrangeMarker.png'
+    }
+
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(crumb.geo[1], crumb.geo[0]),
       map: map.instance,
       title: crumb._id,
-      icon:'img/OrangeMarker.png'
+      icon:icon
     });
     map.instance.markers.push(marker);
   });
@@ -52,7 +59,7 @@ Template.Map.rendered = function() {
     var marker = new google.maps.Marker({
       position: map.options.center,
       map: map.instance,
-      icon:'img/BlueMarker.png',
+      icon:'img/RedMarker.png',
     });
 
     // Add circle overlay and bind to marker
