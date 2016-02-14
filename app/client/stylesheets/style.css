@@ -5,6 +5,11 @@
   height: 100%;
 }
 
+/* Card styles */
+.card {
+    background-color: #d4d4d4;
+}
+
 /* Top right crumbs button */
 .crumbsButton {
   position: absolute;
