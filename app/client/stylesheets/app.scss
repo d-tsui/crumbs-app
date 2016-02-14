@@ -21,6 +21,10 @@ $loading-font-size: 22px;
   border-radius: 5px;
 }
 
+.popup, .popup-container .popup, .card, .popup-buttons {
+    border-radius: 5px;
+}
+
 .popover {
   height: auto;
 }
