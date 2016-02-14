@@ -36,6 +36,21 @@ Template.CrumbView.events({
       Meteor.call("postComment", comment);
       document.getElementById("replyText").value = "";
     }
+  },
+  "click #addToPoll": function(){
+    var answer = document.getElementById("pollAnswer").value;
+    if (answer){
+        Meteor.call("addToPoll", Session.get("currentCrumb"), answer);
+        document.getElementById("pollAnswer").value = "";
+    }
+  },
+  "click #voteItem": function(){
+    var c = closest(event.target, function(el){return el.id === 'voteItem';});
+    var answer = c.getAttribute("data-id");
+    if (answer){
+        Meteor.call("addToPoll", Session.get("currentCrumb"), answer);
+        document.getElementById("pollAnswer").value = "";
+    }
   }
 });
 
@@ -89,7 +104,14 @@ Template.CrumbView.helpers({
   pollAnswers: function(){
     var crumb = Crumbs.findOne({_id: Session.get("currentCrumb")});
     if (crumb.type == "poll"){
+      var poll = crumb.poll;
+      for (x in poll){
+        poll[x].count = poll[x].votes.length;
+        poll[x].me = _.contains(poll[x].votes, Meteor.userId());
+      }
 
+      var poll = _.sortBy(poll, function(p){ return p.count * -1; });
+      return poll;
     } else {
       return null;
     }

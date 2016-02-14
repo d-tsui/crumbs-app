@@ -25,6 +25,9 @@ Template.InputBar.events({
     crumb.type = Session.get("crumbType");
     if (crumb.type == "text" || crumb.type == "poll"){
       crumb.content = document.getElementById("inputContent").value;
+      if (crumb.type == "poll"){
+        crumb.poll = [];
+      }
     } else if (crumb.type == "image" || crumb.type == "gif"){
       crumb.src =  document.getElementById("imagePreview").src;
       crumb.content = document.getElementById("inputContent").value;
