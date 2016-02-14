@@ -10,3 +10,21 @@ Template.FeedView.helpers({
     return crumbs;
   }
 });
+
+Template.FeedView.helpers({
+  "feedView": function(){
+    if (!Session.get("feedView")){
+      Meteor.subscribe("crumbs", true, null);
+    }
+    return Session.get("feedView");
+  }
+});
+
+Template.FeedView.events({
+  "click #mycrumbsToggle": function(){
+    Session.set("feedView", false);
+  },
+  "click #feedToggle": function(){
+    Session.set("feedView", true);
+  }
+});
