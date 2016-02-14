@@ -3,14 +3,23 @@
 // else publish nearby feed
 Meteor.publish("crumbs", function (myCrumbs, myLocation) {
   if (this.userId) {
+    var crumbFilter = {
+      'flag.2': { $exists: false },
+      'flag': { $nin: [this.userId] },
+      'hidden': { $exists: false }
+    };
+
     if (myCrumbs){            //returns all crumbs user has posted
       return Crumbs.find(
-        {userId: this.userId},
+        {userId: this.userId, 'hidden': { $exists: false }},
         {sort: {time: -1}}
       );
     } else {
       return Crumbs.find(   //returns all crumbs within radius
-        {geo:{ $near :{$geometry: { type: "Point",  coordinates: myLocation }, $maxDistance:50} } },
+        {$and:[
+          {geo:{ $near :{$geometry: { type: "Point",  coordinates: myLocation }, $maxDistance:50} }},
+          crumbFilter
+        ]},
         {sort: {time: -1}}
       );
     }

@@ -1,8 +1,47 @@
 Template.CrumbView.events({
   "click #crumbsBackButton": function(){
     Session.set("viewType", "feed");
+  },
+  "click #cardItem": function(){
+    Session.set("toggleDelete", 1 - Session.get("toggleDelete"));
+  },
+  "click #deleteButton": function(){
+    IonPopup.confirm({
+      title: 'Delete Post',
+      template: 'Are you sure you want to delete your crumb?  This action cannot be undone.',
+      onOk: function() {
+        Meteor.call("deleteCrumb", Session.get("currentCrumb"));
+        Session.set("viewType","feed");
+      },
+      onCancel: function() { }
+    });
+  },
+  "click #flagButton": function(){
+    IonPopup.confirm({
+      title: 'Flag Post',
+      template: 'Are you sure you want to flag this post?',
+      onOk: function() {
+        Meteor.call("flagCrumb", Session.get("currentCrumb"));
+        Session.set("viewType","feed");
+      },
+      onCancel: function() { }
+    });
+  },
+  "click #replySubmit": function(){
+    var comment = {};
+    comment.type = "text";
+    comment.content = document.getElementById("replyText").value;
+    comment.crumbId = Session.get("currentCrumb");
+    if (comment.content){
+      Meteor.call("postComment", comment);
+      document.getElementById("replyText").value = "";
+    }
   }
 });
+
+Template.CrumbView.rendered = function(){
+  Session.set("toggleDelete", 0);
+}
 
 Template.CrumbView.helpers({
   currentCrumb: function(){
@@ -33,5 +72,15 @@ Template.CrumbView.helpers({
     } else {
       return 0;
     }
+  },
+  myCrumb: function(){
+    if(Crumbs.findOne({_id: Session.get("currentCrumb"), userId: Meteor.userId()})){
+      return true;
+    } else {
+      return false;
+    }
+  },
+  toggleDelete: function(){
+    return Session.get("toggleDelete");
   }
 });
