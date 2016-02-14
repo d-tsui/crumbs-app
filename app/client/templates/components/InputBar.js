@@ -7,6 +7,8 @@ var dataURLToBlob = function(dataURL){
   return new Blob([u8arr], {type:mime});
 };
 
+Template.InputBar.helpers({
+});
 
 Template.InputBar.events({
   "click #submit": function(){
@@ -28,16 +30,23 @@ Template.InputBar.events({
       crumb.content = document.getElementById("inputContent").value;
     }
 
-    if (crumb.content != ""  || crumb.src  != "" && geo){
+    if ((crumb.content != "" || crumb.src) && geo){
       crumb.geo = [geo.lng, geo.lat];
       Meteor.call("postCrumb", crumb);
       Session.set("crumbType", "text");
-      document.getElementById("input-bar-card").style.opacity = "0.5";
+      //document.getElementById("input-bar-card").style.opacity = "0.5";
       document.getElementById("input-bar-card").innerHTML = "<label class='item item-input' id='input-bar-label'><input type='text' placeholder='Write something...' id='inputContent'><span id='input-bar-button-span'></span><button class='button button-clear' id='submit'><i class='icon ion-ios-arrow-right placeholder-icon'></i></button></label>";
     }
   },
   "focusin #inputContent": function(){
-        document.getElementById("input-bar-card").style.opacity = "1.0";
+    document.getElementById("input-bar-card").removeAttribute("style");
+    document.getElementById("input-bar-card").className += ' focusInputBar';
+  },
+  "focusout #inputContent": function(){
+    if (!document.getElementById("imagePreview")){
+      document.getElementById("input-bar-card").className = 'card input-bar focusOutInputBar';
+      document.getElementById("input-bar-card").style.opacity = 0.5;
+    }
   },
   "keyup #inputContent": function(){
     var input = document.getElementById("inputContent").value.toLowerCase();
@@ -61,6 +70,7 @@ Template.InputBar.events({
       }, function(err, res) {
         var url = res.url;
         Session.set("crumbType", "image");
+        document.getElementById("input-bar-card").style.opacity = 1;
         document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' style='width:100%' />" + document.getElementById("input-bar-card").innerHTML;
       });
     });
@@ -74,6 +84,7 @@ Template.InputBar.events({
       }, function(err, res) {
         var url = res.url;
         Session.set("crumbType", "image");
+        document.getElementById("input-bar-card").style.opacity = 1;
         document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' style='width:100%' />" + document.getElementById("input-bar-card").innerHTML;
       });
     });

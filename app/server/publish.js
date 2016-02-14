@@ -17,7 +17,7 @@ Meteor.publish("crumbs", function (myCrumbs, myLocation) {
     } else {
       return Crumbs.find(   //returns all crumbs within radius
         {$and:[
-          {geo:{ $near :{$geometry: { type: "Point",  coordinates: myLocation }, $maxDistance:200} }},
+          {geo:{ $near :{$geometry: { type: "Point",  coordinates: myLocation }, $maxDistance:50} }},
           crumbFilter
         ]},
         {sort: {time: -1}}

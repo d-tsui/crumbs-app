@@ -1,7 +1,5 @@
 Template.Home.events({
-  "click #crumbsBackButton": function(){
-    Session.set("viewType", "map");
-  }
+  
 });
 
 Template.Home.helpers({
@@ -19,9 +17,3 @@ Template.Home.helpers({
 Template.Home.rendered = function(){
   Session.set("viewType", "map");
 };
-
-function closest(el, fn) {
-    return el && (
-        fn(el) ? el : closest(el.parentNode, fn)
-    );
-}
