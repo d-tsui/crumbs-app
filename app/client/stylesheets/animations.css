@@ -174,3 +174,260 @@ focusOutInputBar = change the input bar opacity from 1.0 to 0.5
 		opacity: 0.6;
 	}
 }
+
+
+/*
+==============================================
+menuSlideDown
+==============================================
+*/
+
+
+.menuSlideDown{
+	animation-name: menuSlideDown;
+	-webkit-animation-name: menuSlideDown;
+
+	animation-duration: 1s;
+	-webkit-animation-duration: 1s;
+
+	animation-timing-function: ease;
+	-webkit-animation-timing-function: ease;
+
+	visibility: visible !important;
+}
+
+@keyframes menuSlideDown {
+	0% {
+		transform: translateY(-100%);
+	}
+	50%{
+		transform: translateY(8%);
+	}
+	65%{
+		transform: translateY(-4%);
+	}
+	80%{
+		transform: translateY(4%);
+	}
+	95%{
+		transform: translateY(-2%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+@-webkit-keyframes menuSlideDown {
+	0% {
+		-webkit-transform: translateY(-100%);
+	}
+	50%{
+		-webkit-transform: translateY(8%);
+	}
+	65%{
+		-webkit-transform: translateY(-4%);
+	}
+	80%{
+		-webkit-transform: translateY(4%);
+	}
+	95%{
+		-webkit-transform: translateY(-2%);
+	}
+	100% {
+		-webkit-transform: translateY(0%);
+	}
+}
+
+/*
+==============================================
+menuSlideDown2
+==============================================
+*/
+
+
+.menuSlideDown2{
+	animation-name: menuSlideDown2;
+	-webkit-animation-name: menuSlideDown2;
+
+	animation-duration: 1s;
+	-webkit-animation-duration: 1s;
+
+	animation-timing-function: ease;
+	-webkit-animation-timing-function: ease;
+
+	visibility: visible !important;
+}
+
+@keyframes menuSlideDown2 {
+	0% {
+		transform: translateY(-200%);
+	}
+	50%{
+		transform: translateY(8%);
+	}
+	65%{
+		transform: translateY(-4%);
+	}
+	80%{
+		transform: translateY(4%);
+	}
+	95%{
+		transform: translateY(-2%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+@-webkit-keyframes menuSlideDown2 {
+	0% {
+		-webkit-transform: translateY(-200%);
+	}
+	50%{
+		-webkit-transform: translateY(8%);
+	}
+	65%{
+		-webkit-transform: translateY(-4%);
+	}
+	80%{
+		-webkit-transform: translateY(4%);
+	}
+	95%{
+		-webkit-transform: translateY(-2%);
+	}
+	100% {
+		-webkit-transform: translateY(0%);
+	}
+}
+
+/*
+==============================================
+menuSlideUp
+==============================================
+*/
+
+
+.menuSlideUp{
+	animation-name: menuSlideUp;
+	-webkit-animation-name: menuSlideUp;
+
+	animation-duration: 1s;
+	-webkit-animation-duration: 1s;
+
+	animation-timing-function: ease;
+	-webkit-animation-timing-function: ease;
+
+	visibility: visible !important;
+}
+
+@keyframes menuSlideUp {
+	0% {
+		transform: translateY(100%);
+		opacity: 1;
+	}
+	50%{
+		transform: translateY(-8%);
+	}
+	65%{
+		transform: translateY(4%);
+	}
+	80%{
+		transform: translateY(-4%);
+	}
+	95%{
+		transform: translateY(2%);
+	}
+	100% {
+		transform: translateY(0%);
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes menuSlideUp {
+	0% {
+		-webkit-transform: translateY(100%);
+		opacity: 1;
+	}
+	50%{
+		-webkit-transform: translateY(-8%);
+	}
+	65%{
+		-webkit-transform: translateY(4%);
+	}
+	80%{
+		-webkit-transform: translateY(-4%);
+	}
+	95%{
+		-webkit-transform: translateY(2%);
+	}
+	100% {
+		-webkit-transform: translateY(0%);
+		opacity: 0;
+	}
+}
+
+/*
+==============================================
+menuSlideUp2
+==============================================
+*/
+
+
+.menuSlideUp2{
+	animation-name: menuSlideUp2;
+	-webkit-animation-name: menuSlideUp2;
+
+	animation-duration: 1s;
+	-webkit-animation-duration: 1s;
+
+	animation-timing-function: ease;
+	-webkit-animation-timing-function: ease;
+
+	visibility: visible !important;
+}
+
+@keyframes menuSlideUp2 {
+	0% {
+		transform: translateY(200%);
+		opacity: 1;
+	}
+	50%{
+		transform: translateY(-8%);
+	}
+	65%{
+		transform: translateY(4%);
+	}
+	80%{
+		transform: translateY(-4%);
+	}
+	95%{
+		transform: translateY(2%);
+	}
+	100% {
+		transform: translateY(0%);
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes menuSlideUp2 {
+	0% {
+		-webkit-transform: translateY(200%);
+		opacity: 1;
+	}
+	50%{
+		-webkit-transform: translateY(-8%);
+	}
+	65%{
+		-webkit-transform: translateY(4%);
+	}
+	80%{
+		-webkit-transform: translateY(-4%);
+	}
+	95%{
+		-webkit-transform: translateY(2%);
+	}
+	100% {
+		-webkit-transform: translateY(0%);
+		opacity: 0;
+	}
+}

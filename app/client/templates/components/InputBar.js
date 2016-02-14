@@ -25,7 +25,7 @@ Template.InputBar.events({
     crumb.type = Session.get("crumbType");
     if (crumb.type == "text"){
       crumb.content = document.getElementById("inputContent").value;
-    } else if (crumb.type == "image"){
+    } else if (crumb.type == "image" || crumb.type == "gif"){
       crumb.src =  document.getElementById("imagePreview").src;
       crumb.content = document.getElementById("inputContent").value;
     }
@@ -34,6 +34,7 @@ Template.InputBar.events({
       crumb.geo = [geo.lng, geo.lat];
       Meteor.call("postCrumb", crumb);
       Session.set("crumbType", "text");
+      Session.set("selectedGif",null);
       //document.getElementById("input-bar-card").style.opacity = "0.5";
       document.getElementById("input-bar-card").innerHTML = "<label class='item item-input' id='input-bar-label'><input type='text' placeholder='Write something...' id='inputContent'><span id='input-bar-button-span'></span><button class='button button-clear' id='submit'><i class='icon ion-ios-arrow-right placeholder-icon'></i></button></label>";
     }
@@ -43,7 +44,7 @@ Template.InputBar.events({
     document.getElementById("input-bar-card").className += ' focusInputBar';
   },
   "focusout #inputContent": function(){
-    if (!document.getElementById("imagePreview")){
+    if (!document.getElementById("imagePreview") && !Session.get("selectedGif")){
       document.getElementById("input-bar-card").className = 'card input-bar focusOutInputBar';
       document.getElementById("input-bar-card").style.opacity = 0.6;
     }
@@ -54,6 +55,8 @@ Template.InputBar.events({
       document.getElementById("input-bar-button-span").innerHTML = "<i class='icon ion-image input-bar-button' id='input-bar-button-image'></i>";
     } else if (input == "cam" && Session.get("crumbType") == "text") {
       document.getElementById("input-bar-button-span").innerHTML = "<i class='icon ion-camera input-bar-button' id='input-bar-button-camera'></i>";
+    } else if (input == "gif" && Session.get("crumbType") == "text") {
+      document.getElementById("input-bar-button-span").innerHTML = "<i class='input-bar-button' id='input-bar-button-gif'>GIF</i>";
     } else {
       document.getElementById("input-bar-button-span").innerHTML = "";
     }
@@ -88,9 +91,18 @@ Template.InputBar.events({
         document.getElementById("input-bar-card").innerHTML = "<img src='"+ url + "' id='imagePreview' class='img-responsive' style='width:100%;padding:25px' />" + document.getElementById("input-bar-card").innerHTML;
       });
     });
+  },
+  "click #input-bar-button-gif": function(event){
+    Session.set("viewType", "gif");
   }
 });
 
 Template.InputBar.rendered = function(){
-  Session.set("crumbType", "text");
+  if (! Session.get("selectedGif")){
+    Session.set("crumbType", "text");
+  } else {
+    Session.set("crumbType", "gif");
+    document.getElementById("input-bar-card").style.opacity = 1;
+    document.getElementById("input-bar-card").innerHTML = "<img src='"+ Session.get("selectedGif") + "' id='imagePreview' class='img-responsive' style='width:100%;padding:25px' />" + document.getElementById("input-bar-card").innerHTML;
+  }
 }

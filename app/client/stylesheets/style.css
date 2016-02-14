@@ -19,6 +19,24 @@
   position: absolute;
   top: 15px;
   left: 15px;
+  z-index: 102;
+  width: 40px;
+}
+
+/* Top left help button */
+.helpButton {
+  position: absolute;
+  top: 70px;
+  left: 15px;
+  z-index: 101;
+  width: 40px;
+}
+
+/* Top left help button */
+.logoutButton {
+  position: absolute;
+  top: 125px;
+  left: 15px;
   z-index: 101;
   width: 40px;
 }
@@ -52,6 +70,11 @@ div .feedDisplay {
 
 .comment-circle-image {
   background-color: rgb(255,147,59);  /* orange */
+  color:white;
+}
+
+.comment-circle-gif {
+  background-color: #BA9EDB;  /* orange */
   color:white;
 }
 

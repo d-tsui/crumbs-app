@@ -51,6 +51,7 @@ Template.CrumbView.helpers({
       crumb.timestamp = moment(crumb.time).fromNow(true);
       crumb.text = (crumb.type == "text");
       crumb.image = (crumb.type == "image");
+      crumb.gif = (crumb.type == "gif");
       return crumb;
     } else {
       return null;

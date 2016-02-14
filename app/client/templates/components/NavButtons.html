@@ -1,6 +1,10 @@
 <template name="NavButtons">
   {{> MenuButton}}
   {{> CrumbsButton}}
+  {{#if menuToggle}}
+    {{> HelpButton}}
+    {{> LogoutButton}}
+  {{/if}}
 </template>
 
 <template name="CrumbsButton">
@@ -9,4 +13,12 @@
 
 <template name="MenuButton">
   <img class="menuButton" src="/img/menuicon.png" alt="Menu Icon">
+</template>
+
+<template name="HelpButton">
+  <img class="helpButton menuSlideDown" src="/img/helpicon.png" alt="Help Icon" id="helpButton">
+</template>
+
+<template name="LogoutButton">
+  <img class="logoutButton menuSlideDown2" src="/img/logout.png" alt="Logout" id="logoutButton">
 </template>

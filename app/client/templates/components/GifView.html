@@ -1,0 +1,21 @@
+<template name="GifView">
+  <div style="position: absolute;width: 100%;height: 100%;z-index: 100;background-color: #000;opacity: 0.5;">
+  </div>
+  <div style="position: absolute;width: 100%;height: 10%;z-index: 101;">
+    <div class="card fadeIn" id="gifQueryBar" style="opacity:0.6;margin: 15px;height: 40px;width:75%">
+      <label class="item item-input" id="input-bar-label">
+        <input type="text" placeholder="Write something..." id="gifQuery" maxlength="150">
+        <span id="input-bar-button-span"></span>
+        <button class="button button-clear" id="submit">
+          <i class="icon ion-ios-arrow-right placeholder-icon"></i>
+        </button>
+      </label>
+    </div>
+    <img class="crumbsButton" id="crumbsBackButton" src="/img/crumblogo.png" alt="Crumb Logo">
+  </div>
+  <div style="position: absolute;bottom:0px;width: 100%;height: 90%;z-index: 101;overflow-x: hidden;overflow-y: scroll;">
+    {{#each gifData}}
+      <img src = "{{images.fixed_width.url}}" style="width:100%;margin-bottom: 10px;" id="selectThisGif" /><br>
+    {{/each}}
+  </div>
+</template>

@@ -1,5 +1,5 @@
 Template.Home.events({
-  
+
 });
 
 Template.Home.helpers({
@@ -11,6 +11,9 @@ Template.Home.helpers({
   },
   mapView: function(){
     return Session.get("viewType") == "map";
+  },
+  gifView: function(){
+    return Session.get("viewType") == "gif";
   }
 });
 

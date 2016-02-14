@@ -9,7 +9,7 @@ var drawMarkers = function(){
     markers[i].setMap(null);
   }
   map.instance.markers = [];
-  
+
   var loc = Geolocation.latLng();
   var crumbs = Crumbs.find().fetch();
   _.each(crumbs, function(crumb){
@@ -18,6 +18,8 @@ var drawMarkers = function(){
       icon = 'img/BlueMarker.png';
     } else if (crumb.type == "image"){
       icon = 'img/OrangeMarker.png'
+    } else if (crumb.type == "gif"){
+      icon = 'img/PurpleMarker.png'
     }
 
     var marker = new google.maps.Marker({
