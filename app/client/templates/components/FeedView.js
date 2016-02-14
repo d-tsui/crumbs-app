@@ -1,7 +1,10 @@
 Template.FeedView.helpers({
   crumbs : function(){
     var loc = Geolocation.latLng();
-    var crumbs = Crumbs.find({geo:{ $near :{$geometry: { type: "Point",  coordinates: [loc.lng, loc.lat] }, $maxDistance:50} }},{sort:{time:-1}}).fetch();
+    console.log(loc);
+    var crumbs = Crumbs.find({'geo':{ '$near' :{'$geometry': { type: "Point",  coordinates: [loc.lng, loc.lat] }, '$maxDistance':50} }},{sort:{time:-1}}).fetch();
+    console.log(Crumbs.find().fetch());
+    console.log(crumbs);
     _.map(crumbs, function(crumb){
       crumb.timestamp = moment(crumb.time).fromNow(true);
       crumb.text = (crumb.type == "text");
