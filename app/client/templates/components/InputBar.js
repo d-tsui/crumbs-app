@@ -38,6 +38,7 @@ Template.InputBar.events({
       crumb.geo = [geo.lng, geo.lat];
       Meteor.call("postCrumb", crumb);
       Session.set("crumbType", "text");
+      document.getElementById("input-bar-card").style.opacity = "0.5";
       document.getElementById("input-bar-card").innerHTML = "<label class='item item-input' id='input-bar-label'><input type='text' placeholder='Write something...' id='inputContent'><span id='input-bar-button-span'></span><button class='button button-clear' id='submit'><i class='icon ion-ios-arrow-right placeholder-icon'></i></button></label>";
     }
   },

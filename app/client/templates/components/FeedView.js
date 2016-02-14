@@ -1,5 +1,6 @@
 Template.FeedView.helpers({
   crumbs : function(){
+    var loc = Geolocation.latLng();
     var crumbs = Crumbs.find({},{sort:{time:-1}}).fetch();
     _.map(crumbs, function(crumb){
       crumb.timestamp = moment(crumb.time).fromNow(true);
