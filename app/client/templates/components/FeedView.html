@@ -14,7 +14,7 @@
     {{#each crumbs}}
     <div class="card slideLeft feedDisplay">
       <a class="item item-text-wrap" id="viewCrumb" data-id="{{_id}}">
-        <span style="border-radius: 50%" class={{type}}>{{comments}}</span>
+        <span class="badge comment-circle-{{type}}">{{comments}}</span>
           {{#if text}}
             {{content}}
           {{/if}}
