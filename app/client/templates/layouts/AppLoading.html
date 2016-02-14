@@ -1,13 +1,5 @@
 <template name="AppLoading">
-  {{#ionBody}}
-    {{> ionNavBar class="bar-positive" style="ios"}}
-
-    {{#ionNavView}}
-      {{#ionView}}
-        {{#ionContent}}
-        <div id="spinner"></div>
-        {{/ionContent}}
-      {{/ionView}}
-    {{/ionNavView}}
-  {{/ionBody}}
+    <div class="content padding overflow-scroll login-content-div" style="top: 0;position: absolute;height: 100%;z-index: 100;">
+      <div id="spinner"></div>
+    </div>
 </template>

@@ -7,38 +7,39 @@
   <div style="position: absolute;bottom:0px;width: 100%;height: 90%;z-index: 101;overflow-x: hidden;overflow-y: scroll;">
     <div class="card">
       <div class="item item-text-wrap" id="cardItem">
-          {{#if currentCrumb.text}}
-            {{currentCrumb.content}}
-          {{/if}}
-          {{#if currentCrumb.image}}
-            <img src="{{currentCrumb.src}}" class="img-responsive" style="width:100%" /><br>
-            {{currentCrumb.content}}
-          {{/if}}
-          {{#if currentCrumb.gif}}
-            <img src="{{currentCrumb.src}}" class="img-responsive" style="width:100%" /><br>
-            {{currentCrumb.content}}
-          {{/if}}
-          {{#if currentCrumb.poll}}
-            {{currentCrumb.content}}
-          {{/if}}
-          <p class="subdued">{{currentCrumb.timestamp}}</p>
-
-          {{#if toggleDelete}}
-            {{#if myCrumb}}
-            <a class="item item-icon-left" href="#" id="deleteButton">
-              <i class="icon ion-ios-trash"></i>
-              Delete
-            </a>
-            {{else}}
-            <a class="item item-icon-left" href="#" id="flagButton">
-              <i class="icon ion-ios-flag"></i>
-              Flag
-            </a>
-            {{/if}}
-
-          {{/if}}
+        {{#if currentCrumb.text}}
+          {{currentCrumb.content}}
+        {{/if}}
+        {{#if currentCrumb.image}}
+          <img src="{{currentCrumb.src}}" class="img-responsive" style="width:100%" /><br>
+          {{currentCrumb.content}}
+        {{/if}}
+        {{#if currentCrumb.gif}}
+          <img src="{{currentCrumb.src}}" class="img-responsive" style="width:100%" /><br>
+          {{currentCrumb.content}}
+        {{/if}}
+        {{#if currentCrumb.poll}}
+          {{currentCrumb.content}}
+        {{/if}}
+        <p class="subdued">{{currentCrumb.timestamp}}</p>
       </div>
     </div>
+
+    {{#if toggleDelete}}
+    <div class="card">
+      {{#if myCrumb}}
+      <a class="item item-icon-left pullDown" href="#" id="deleteButton">
+        <i class="icon ion-ios-trash"></i>
+        Delete
+      </a>
+      {{else}}
+      <a class="item item-icon-left pullDown" href="#" id="flagButton">
+        <i class="icon ion-ios-flag"></i>
+        Flag
+      </a>
+      {{/if}}
+    </div>
+    {{/if}}
 
     <div class="card">
       {{#if currentCrumb.poll}}

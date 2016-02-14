@@ -48,6 +48,9 @@ Router.map(function() {
     path: '/',
     onBeforeAction: function (pause) {
       this.next();
+    },
+    waitOn: function(){
+      return Geolocation.latLng();
     }
   });
 

@@ -11,7 +11,7 @@ var drawMarkers = function(){
   map.instance.markers = [];
 
   var loc = Geolocation.latLng();
-  var crumbs = Crumbs.find().fetch();
+  var crumbs = Crumbs.find({geo:{ $near :{$geometry: { type: "Point",  coordinates: [loc.lng, loc.lat] }, $maxDistance:50} }}).fetch();
   _.each(crumbs, function(crumb){
     var icon = "";
     if (crumb.type == "text"){
@@ -62,9 +62,10 @@ Template.Map.helpers({
 });
 
 Template.Map.rendered = function() {
+  Session.set("mapLoading", true);
   GoogleMaps.load();
   GoogleMaps.ready('crumbsMap', function(map) {
-
+    Session.set("mapLoading", false);
     /*
     map.instance.addListener('bounds_changed', function(e) {
       Session.set("bounds_changed", 1);

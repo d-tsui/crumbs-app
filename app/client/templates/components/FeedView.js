@@ -1,13 +1,24 @@
 Template.FeedView.helpers({
   crumbs : function(){
-    var crumbs = Crumbs.find({},{sort:{time:-1}}).fetch();
+    if (!Session.get("feedView")){
+      var crumbs = Crumbs.find({userId:Meteor.userId()},{sort:{time:-1}}).fetch();
+    } else {
+      var crumbs = Crumbs.find({},{sort:{time:-1}}).fetch();
+    }
+
     _.map(crumbs, function(crumb){
       crumb.timestamp = moment(crumb.time).fromNow(true);
       crumb.text = (crumb.type == "text");
       crumb.image = (crumb.type == "image");
       crumb.gif = (crumb.type == "gif");
+      crumb.pollData = crumb.poll;
       crumb.poll = (crumb.type == "poll");
-      crumb.comments = Comments.find({crumbId: crumb._id}).count();
+      if (crumb.type == "poll"){
+        crumb.comments = _.reduce(crumb.pollData, function(memo, obj){ return memo + obj.votes.length; }, 0);
+      } else {
+        crumb.comments = Comments.find({crumbId: crumb._id}).count();
+      }
+
     });
     return crumbs;
   },

@@ -21,6 +21,12 @@ $loading-font-size: 22px;
   border-radius: 5px;
 }
 
+.item .badge {
+  bottom: 16px;
+  right: 16px;
+  top: initial;
+}
+
 .popup, .popup-container .popup, .card, .popup-buttons {
     border-radius: 5px;
 }
