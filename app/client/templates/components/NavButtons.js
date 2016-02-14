@@ -15,6 +15,13 @@ Template.CrumbsButton.events({
   }
 });
 
+Template.HelpButton.events({
+  "click .helpButton": function(){
+    //Router.go("Feed");
+    Session.set("viewType", "help");
+  }
+});
+
 Template.MenuButton.events({
   "click .menuButton": function(){
     if (Session.get("menuToggle")){
