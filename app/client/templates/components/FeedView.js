@@ -1,6 +1,5 @@
 Template.FeedView.helpers({
   crumbs : function(){
-    var loc = Geolocation.latLng();
     var crumbs = Crumbs.find({},{sort:{time:-1}}).fetch();
     _.map(crumbs, function(crumb){
       crumb.timestamp = moment(crumb.time).fromNow(true);
@@ -13,6 +12,9 @@ Template.FeedView.helpers({
   feedView: function(){
     if (!Session.get("feedView")){
       Meteor.subscribe("crumbs", true, null);
+    } else {
+      var loc = Geolocation.latLng();
+      Meteor.subscribe("crumbs", false, [loc.lng, loc.lat]);
     }
     return Session.get("feedView");
   }
@@ -30,5 +32,14 @@ Template.FeedView.events({
      var crumbId = c.getAttribute("data-id");
      Session.set("currentCrumb", crumbId);
      Session.set("viewType", "crumb");
+  },
+  "click #crumbsBackButton": function(){
+    Session.set("viewType", "map");
   }
 });
+
+function closest(el, fn) {
+    return el && (
+        fn(el) ? el : closest(el.parentNode, fn)
+    );
+}

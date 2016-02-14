@@ -3,6 +3,13 @@ var styles = [{"stylers":[{"saturation":-100}]},{"featureType":"water","elementT
 
 var drawMarkers = function(){
   var map = GoogleMaps.maps.crumbsMap;
+
+  var markers = map.instance.markers;
+  for (var i = 0; i < markers.length; i++){
+    markers[i].setMap(null);
+  }
+  map.instance.markers = [];
+  
   var loc = Geolocation.latLng();
   var crumbs = Crumbs.find().fetch();
   _.each(crumbs, function(crumb){
@@ -60,7 +67,7 @@ Template.Map.rendered = function() {
     });
     */
 
-    //map.instance.markers = []; // array of markers for this end user
+    map.instance.markers = []; // array of markers for this end user
 
     // Add circle overlay and bind to marker
     var radius = new google.maps.Circle({
