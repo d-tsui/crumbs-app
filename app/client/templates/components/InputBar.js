@@ -45,7 +45,7 @@ Template.InputBar.events({
   "focusout #inputContent": function(){
     if (!document.getElementById("imagePreview")){
       document.getElementById("input-bar-card").className = 'card input-bar focusOutInputBar';
-      document.getElementById("input-bar-card").style.opacity = 0.5;
+      document.getElementById("input-bar-card").style.opacity = 0.6;
     }
   },
   "keyup #inputContent": function(){
