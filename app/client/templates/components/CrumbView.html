@@ -41,29 +41,52 @@
     </div>
 
     <div class="card">
-      <div class="item-input-inset">
-        <label class="item-input-wrapper">
-          <input type="text" placeholder="Reply..." id="replyText">
-          <!--<i class="icon ion-image" id="replyImage"></i>-->
-        </label>
-        <button class="button button-clear" id="replySubmit">
-          Post
-        </button>
-      </div>
+      {{#if currentCrumb.poll}}
+        <div class="item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="Add a response..." id="pollAnswer">
+            <!--<i class="icon ion-image" id="replyImage"></i>-->
+          </label>
+          <button class="button button-clear" id="addToPoll">
+            Post
+          </button>
+        </div>
 
-      <div class="list">
-        {{#each currentComments}}
-        <div class="item">
-            {{content}}
-            <p class="subdued">{{timestamp}}</p>
+        <div class="list list-inset" style="border-top: 1px solid #CCC;margin-top: 5px;">
+          {{#each pollAnswers}}
+            <div class="item" style="{{#if me}}font-weight:600;background-color:#CCC{{/if}}" id="voteItem" data-id="{{answer}}">
+              {{answer}}
+              <span class="item-note">
+                {{count}}
+              </span>
+            </div>
+          {{/each}}
         </div>
-        {{/each}}
-        {{#if noCurrentComments}}
-        <div class="item">
-            <p style="text-align:center">No replies to view.</p>
+      {{else}}
+        <div class="item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="Reply..." id="replyText">
+            <!--<i class="icon ion-image" id="replyImage"></i>-->
+          </label>
+          <button class="button button-clear" id="replySubmit">
+            Post
+          </button>
         </div>
-        {{/if}}
-      </div>
+
+        <div class="list">
+          {{#each currentComments}}
+          <div class="item">
+              {{content}}
+              <p class="subdued">{{timestamp}}</p>
+          </div>
+          {{/each}}
+          {{#if noCurrentComments}}
+          <div class="item">
+              <p style="text-align:center">No replies to view.</p>
+          </div>
+          {{/if}}
+        </div>
+      {{/if}}
     </div>
   </div>
 </template>
