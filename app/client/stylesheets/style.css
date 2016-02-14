@@ -76,5 +76,18 @@ div .feedDisplay {
   display: block;
   max-width: 100%;
   height: auto;
-  padding: 5px;
+  padding: 25px;
+}
+
+.login-content-div{
+  text-align: center;
+  padding: 20% 0%;
+  background-image: url('img/SeparatedGradientPanel.png');
+  background-size: 100% 100%;
+  display: block;
+  max-width: 100%;
+  max-height: 500%;
+
+  /*padding: 0px;*/
+
 }
